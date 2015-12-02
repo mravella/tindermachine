@@ -9,7 +9,7 @@ bad = [];
 rejects = [];
 files = [];
 
-folderName = 'newnewwomen';
+folderName = 'women_faces';
 url = "http://localhost:4567/people/"+folderName;
 
 $.get(url, function(response) {
@@ -21,12 +21,19 @@ $.get(url, function(response) {
 document.onkeydown = checkKey;
 
 function getImage() {
-	holder = document.getElementById("photo");
+  photo = document.getElementById("photo");
+  framed = document.getElementById("framed");
+  cropped = document.getElementById("cropped");
 	curr = files.shift();
 	while (curr[0]!='5') {
 		curr = files.shift();
 	}
-	holder.src = folderName+"/"+curr;
+  curr = files.shift();
+  cropped.src = folderName+"/"+curr;
+  curr = files.shift();
+  framed.src = folderName+"/"+curr;
+  curr = files.shift();
+  photo.src = folderName+"/"+curr;
 }
 
 function checkKey(e) {
@@ -59,6 +66,8 @@ function checkKey(e) {
 </script>
 </head>
 <body>
-	<img id="photo"	width="300"></img>
+  <img id="photo" width="300"></img>
+  <img id="framed" width="200"></img>
+  <img id="cropped" width="20"></img>
 </body>
 </html>
