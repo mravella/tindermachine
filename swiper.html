@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+curr = null;
+good = [];
+bad = [];
+rejects = [];
+files = [];
+
+folderName = 'newnewwomen';
+url = "http://localhost:4567/people/"+folderName;
+
+$.get(url, function(response) {
+	files = response;
+	getImage();
+})
+
+
+document.onkeydown = checkKey;
+
+function getImage() {
+	holder = document.getElementById("photo");
+	curr = files.shift();
+	while (curr[0]!='5') {
+		curr = files.shift();
+	}
+	holder.src = folderName+"/"+curr;
+}
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == '40') {
+        // down arrow
+        rejects.push(curr);
+        getImage();
+    }
+    else if (e.keyCode == '37') {
+       // left arrow
+       bad.push(curr);
+       getImage();
+    }
+    else if (e.keyCode == '39') {
+       // right arrow
+       good.push(curr);
+       getImage();
+    }
+
+    if (files.length == 0) {
+    	console.log("GOOD:");
+    	console.log(good);
+    	console.log("BAD:");
+    	console.log(bad);
+    }
+}
+</script>
+</head>
+<body>
+	<img id="photo"	width="300"></img>
+</body>
+</html>
