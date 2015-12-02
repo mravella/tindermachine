@@ -47,12 +47,12 @@ for i=1:length(imagePaths)
     %         imshow(face);
     %         title('Face');
     %         strcat('YES: ', 'faces/', name, '.jpg')
-%             face = imresize(face, [output_size output_size]);
+            face = imresize(face, [output_size output_size]);
             face_big = imresize(face, [512 512]);
-%             imwrite(face, strcat( output_directory, '/', name, '_face', '.png'));
+            imwrite(face, strcat( output_directory, '/', name, '_face', '.png'));
             imwrite(face, strcat( output_directory, '/', name, '_faceLarge', '.png'));
-%             imwrite(image, strcat( output_directory, '/', name, '_orig', '.png'));
-%             imwrite(labeledImage, strcat( output_directory, '/', name, '_label', '.png'));
+            imwrite(image, strcat( output_directory, '/', name, '_orig', '.png'));
+            imwrite(labeledImage, strcat( output_directory, '/', name, '_label', '.png'));
             x = x + 1;
         end
         
