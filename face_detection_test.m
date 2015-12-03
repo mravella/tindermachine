@@ -2,7 +2,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 % Input Variables
-input_directory = 'women_2';
+input_directory = 'women_3';
 output_directory = 'women_faces';
 output_size = 25;
 
@@ -30,7 +30,6 @@ for i=1:length(imagePaths)
     if (strcmp(ext, '.jpg')),
 
         % Read in image and detect face
-        imagePaths{i}
         image =imread(imagePaths{i});
         [containsOneFace, face, labeledImage] = get_face(image);
 
@@ -54,8 +53,7 @@ for i=1:length(imagePaths)
             imwrite(image, strcat( output_directory, '/', name, '_orig', '.png'));
             imwrite(labeledImage, strcat( output_directory, '/', name, '_label', '.png'));
             x = x + 1;
-        end
-        
+        end 
     end
-    x
 end
+x
